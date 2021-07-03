@@ -1,4 +1,4 @@
-﻿
+
 local f, events = CreateFrame("Frame"), {};
 f:RegisterEvent("TRANSMOGRIFY_OPEN")
 --f:RegisterAllEvents();
@@ -23,14 +23,14 @@ function ResizeTransmogrify()
     WardrobeTransmogFrame.ModelScene:SetHeight(modelSceneHeight);
     WardrobeTransmogFrame.Inset.BG:SetWidth(modelSceneWidth);
     WardrobeTransmogFrame.Inset.BG:SetHeight(modelSceneHeight);
-    WardrobeTransmogFrame.ModelScene.HeadButton:SetPoint("LEFT", WardrobeTransmogFrame.ModelScene,"LEFT", 0, 100);
-    WardrobeTransmogFrame.ModelScene.HandsButton:SetPoint("TOPRIGHT", WardrobeTransmogFrame.ModelScene,"TOPRIGHT", -15, 0);
-    WardrobeTransmogFrame.ModelScene.MainHandButton:SetPoint("BOTTOM", WardrobeTransmogFrame.ModelScene,"BOTTOM", -50, 15);
-    WardrobeTransmogFrame.ModelScene.SecondaryHandButton:SetPoint("BOTTOM", WardrobeTransmogFrame.ModelScene,"BOTTOM", 50, 15);
-    WardrobeTransmogFrame.ModelScene.MainHandEnchantButton:SetPoint("BOTTOM", WardrobeTransmogFrame.ModelScene,"BOTTOM", 100, 20);
-    WardrobeTransmogFrame.ModelScene.SecondaryHandEnchantButton:SetPoint("BOTTOM", WardrobeTransmogFrame.ModelScene,"BOTTOM", 100, 20);
+    WardrobeTransmogFrame.HeadButton:SetPoint("LEFT", WardrobeTransmogFrame.ModelScene,"LEFT", 15, 100);
+    WardrobeTransmogFrame.HandsButton:SetPoint("TOPRIGHT", WardrobeTransmogFrame.ModelScene,"TOPRIGHT", -15, 0);
+    WardrobeTransmogFrame.MainHandButton:SetPoint("BOTTOM", WardrobeTransmogFrame.ModelScene,"BOTTOM", -50, 15);
+    WardrobeTransmogFrame.SecondaryHandButton:SetPoint("BOTTOM", WardrobeTransmogFrame.ModelScene,"BOTTOM", 50, 15);
+    WardrobeTransmogFrame.MainHandEnchantButton:SetPoint("BOTTOM", WardrobeTransmogFrame.ModelScene,"BOTTOM", 100, 20);
+    WardrobeTransmogFrame.SecondaryHandEnchantButton:SetPoint("BOTTOM", WardrobeTransmogFrame.ModelScene,"BOTTOM", 100, 20);
+    WardrobeTransmogFrame.ToggleSecondaryAppearanceCheckbox:SetPoint("LEFT", WardrobeTransmogFrame.ModelScene,"TOPRIGHT", 50, -200);
     WardrobeFrame:ClearAllPoints();
     WardrobeFrame:SetPoint("CENTER", UIParent ,"CENTER",0,0);
     -- WardrobeFrame:SetUserPlaced(true);
 end
-
