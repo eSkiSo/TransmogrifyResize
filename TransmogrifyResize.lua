@@ -1,4 +1,4 @@
-
+﻿
 local f, events = CreateFrame("Frame"), {};
 f:RegisterEvent("TRANSMOGRIFY_OPEN")
 --f:RegisterAllEvents();
@@ -15,22 +15,26 @@ function ResizeTransmogrify()
     local frameHeight = GetScreenHeight() - 240; -- 841
     local modelSceneWidth = frameWidth - 662; -- 800
     local modelSceneHeight = frameHeight - 111; -- 730
-    WardrobeFrame:SetWidth(frameWidth);
-    WardrobeFrame:SetHeight(frameHeight);
-    WardrobeTransmogFrame.ModelScene:SetWidth(modelSceneWidth);
-    WardrobeTransmogFrame:SetWidth(modelSceneWidth);
-    WardrobeTransmogFrame:SetHeight(modelSceneHeight);
-    WardrobeTransmogFrame.ModelScene:SetHeight(modelSceneHeight);
-    WardrobeTransmogFrame.Inset.BG:SetWidth(modelSceneWidth);
-    WardrobeTransmogFrame.Inset.BG:SetHeight(modelSceneHeight);
-    WardrobeTransmogFrame.HeadButton:SetPoint("LEFT", WardrobeTransmogFrame.ModelScene,"LEFT", 15, 100);
-    WardrobeTransmogFrame.HandsButton:SetPoint("TOPRIGHT", WardrobeTransmogFrame.ModelScene,"TOPRIGHT", -15, 0);
-    WardrobeTransmogFrame.MainHandButton:SetPoint("BOTTOM", WardrobeTransmogFrame.ModelScene,"BOTTOM", -50, 15);
-    WardrobeTransmogFrame.SecondaryHandButton:SetPoint("BOTTOM", WardrobeTransmogFrame.ModelScene,"BOTTOM", 50, 15);
-    WardrobeTransmogFrame.MainHandEnchantButton:SetPoint("BOTTOM", WardrobeTransmogFrame.ModelScene,"BOTTOM", 100, 20);
-    WardrobeTransmogFrame.SecondaryHandEnchantButton:SetPoint("BOTTOM", WardrobeTransmogFrame.ModelScene,"BOTTOM", 100, 20);
-    WardrobeTransmogFrame.ToggleSecondaryAppearanceCheckbox:SetPoint("LEFT", WardrobeTransmogFrame.ModelScene,"TOPRIGHT", 50, -200);
-    WardrobeFrame:ClearAllPoints();
-    WardrobeFrame:SetPoint("CENTER", UIParent ,"CENTER",0,0);
+    if WardrobeFrame ~= nil then
+        WardrobeFrame:SetWidth(frameWidth);
+        WardrobeFrame:SetHeight(frameHeight);
+        WardrobeTransmogFrame.ModelScene:SetWidth(modelSceneWidth);
+        WardrobeTransmogFrame:SetWidth(modelSceneWidth);
+        WardrobeTransmogFrame:SetHeight(modelSceneHeight);
+        WardrobeTransmogFrame.ModelScene:SetHeight(modelSceneHeight);
+        WardrobeTransmogFrame.Inset.BG:SetWidth(modelSceneWidth);
+        WardrobeTransmogFrame.Inset.BG:SetHeight(modelSceneHeight);
+        WardrobeTransmogFrame.HeadButton:SetPoint("LEFT", WardrobeTransmogFrame.ModelScene,"LEFT", 15, 100);
+        WardrobeTransmogFrame.HandsButton:SetPoint("TOPRIGHT", WardrobeTransmogFrame.ModelScene,"TOPRIGHT", -15, 0);
+        WardrobeTransmogFrame.MainHandButton:SetPoint("BOTTOM", WardrobeTransmogFrame.ModelScene,"BOTTOM", -50, 15);
+        WardrobeTransmogFrame.SecondaryHandButton:SetPoint("BOTTOM", WardrobeTransmogFrame.ModelScene,"BOTTOM", 50, 15);
+        WardrobeTransmogFrame.MainHandEnchantButton:SetPoint("BOTTOM", WardrobeTransmogFrame.ModelScene,"BOTTOM", 100, 20);
+        WardrobeTransmogFrame.SecondaryHandEnchantButton:SetPoint("BOTTOM", WardrobeTransmogFrame.ModelScene,"BOTTOM", 100, 20);
+        WardrobeTransmogFrame.ToggleSecondaryAppearanceCheckbox:SetPoint("LEFT", WardrobeTransmogFrame.ModelScene,"TOPRIGHT", 50, -200);
+        WardrobeFrame:ClearAllPoints();
+        WardrobeFrame:SetPoint("CENTER", UIParent ,"CENTER",0,0);
+    else
+        print("TransmogrifyResize: Event occured but no Wardrobe found.")
+    end
     -- WardrobeFrame:SetUserPlaced(true);
 end
