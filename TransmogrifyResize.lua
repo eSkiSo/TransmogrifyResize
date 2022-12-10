@@ -10,9 +10,16 @@ f:SetScript("OnEvent", function(self,event, ...)
     end  
 end)
 
-function ResizeTransmogrify()
-    local frameWidth = GetScreenWidth() - 460;   -- 1462
-    local frameHeight = GetScreenHeight() - 240; -- 841
+local isAddedResize = false
+
+function ResizeTransmogrify(frameWidth, frameHeight)
+    if frameWidth == nil then
+        frameWidth = GetScreenWidth() - 460;   -- 1462
+    end
+    
+    if frameHeight == nil then
+        frameHeight = GetScreenHeight() - 240; -- 841
+    end
     local modelSceneWidth = frameWidth - 662; -- 800
     local modelSceneHeight = frameHeight - 111; -- 730
     if WardrobeFrame ~= nil then
@@ -33,8 +40,36 @@ function ResizeTransmogrify()
         WardrobeTransmogFrame.ToggleSecondaryAppearanceCheckbox:SetPoint("LEFT", WardrobeTransmogFrame.ModelScene,"TOPRIGHT", 50, -200);
         WardrobeFrame:ClearAllPoints();
         WardrobeFrame:SetPoint("CENTER", UIParent ,"CENTER",0,0);
+
+        if isAddedResize == false then
+            local resizeButton = CreateFrame("Button", nil, WardrobeFrame)
+            resizeButton:SetSize(16, 16)
+            resizeButton:SetPoint("BOTTOMRIGHT")
+            resizeButton:SetNormalTexture("Interface\\ChatFrame\\UI-ChatIM-SizeGrabber-Up")
+            resizeButton:SetHighlightTexture("Interface\\ChatFrame\\UI-ChatIM-SizeGrabber-Highlight")
+            resizeButton:SetPushedTexture("Interface\\ChatFrame\\UI-ChatIM-SizeGrabber-Down")
+             
+            resizeButton:SetScript("OnMouseDown", function(self, button)
+                WardrobeFrame:SetResizable(true)
+                WardrobeFrame:StartSizing("BOTTOMRIGHT")
+                WardrobeFrame:SetUserPlaced(true)
+
+            end)
+             
+            resizeButton:SetScript("OnMouseUp", function(self, button)
+                WardrobeFrame:StopMovingOrSizing()
+                local newWidth = WardrobeFrame:GetWidth()
+                local newHeight = WardrobeFrame:GetHeight()
+                ResizeTransmogrify(newWidth, newHeight);
+
+            end)
+            isAddedResize = true
+        end
+
     else
         print("TransmogrifyResize: Event occured but no Wardrobe found.")
     end
     -- WardrobeFrame:SetUserPlaced(true);
 end
+
+
