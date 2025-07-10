@@ -1,10 +1,10 @@
 ﻿
 local f, events = CreateFrame("Frame"), {};
-f:RegisterEvent("TRANSMOGRIFY_OPEN")
+f:RegisterEvent("TRANSMOG_COLLECTION_UPDATED")
 --f:RegisterAllEvents();
 
 f:SetScript("OnEvent", function(self,event, ...)
-    if event == "TRANSMOGRIFY_OPEN" then
+    if event == "TRANSMOG_COLLECTION_UPDATED" then
         -- print("Improving Transmog window...")
         ResizeTransmogrify();
     end  
