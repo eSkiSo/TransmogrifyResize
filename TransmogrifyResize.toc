@@ -12,9 +12,9 @@
 # Mainland/Singapore uses simplified
 # Taiwan/Others use traditional
 
-## Version: 1.6
+## Version: 1.6.1
 ## Author: eSkiSo, Cosmic Cleric
-## Interface: 100207, 110000, 110002, 110107
+## Interface: 100207, 110000, 110002, 110107, 110200
 
 ## Category: User Interface
 ## Category-deDE: Benutzerinterface
@@ -35,4 +35,5 @@
 ## SavedVariablesPerCharacter: TransmogResize_FrameWidth, TransmogResize_FrameHeight
 
 TransmogrifyResize.lua
+
 
